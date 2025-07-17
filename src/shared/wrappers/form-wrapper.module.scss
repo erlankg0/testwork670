@@ -1,0 +1,45 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+
+  &.column {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &.row {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  // Опциональные модификаторы
+  &.center {
+    justify-content: center;
+  }
+
+  &.between {
+    justify-content: space-between;
+  }
+
+  &.start {
+    justify-content: flex-start;
+  }
+
+  &.end {
+    justify-content: flex-end;
+  }
+
+  &.align-top {
+    align-items: flex-start;
+  }
+
+  &.align-bottom {
+    align-items: flex-end;
+  }
+
+  &.no-gap {
+    gap: 0;
+  }
+}

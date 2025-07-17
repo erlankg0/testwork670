@@ -1,0 +1,23 @@
+
+
+.topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  align-items: center;
+
+  background-color: $secondary-bg-color;
+  height: $topbar-height;
+  width: $topbar-weight;
+
+  padding: 1.5rem 1rem;
+
+
+  &__contacts {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    align-items: center;
+  }
+}
