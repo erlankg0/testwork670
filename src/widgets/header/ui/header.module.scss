@@ -1,10 +1,16 @@
 .header {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center; // добавлено для вертикального центрирования
+  flex-direction: column;
   background-color: $primary-color;
-  height: 10rem;
+  border-bottom: .3rem solid $red-color;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; // добавлено для вертикального центрирования
+    height: 10rem;
+  }
 
   &__info {
   }

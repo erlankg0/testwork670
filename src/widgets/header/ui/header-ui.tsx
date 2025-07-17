@@ -6,9 +6,11 @@ import { LogoUI } from '@/shared/components/logo';
 export function HeaderUI() {
   return (
     <header className={styles.header}>
-      <Container>
+      <Container className={styles.header__container}>
         <div className={styles.header__info}>
+          <Link href="/">
             <LogoUI />
+          </Link>
         </div>
         <div className={styles.header__banner}></div>
       </Container>
