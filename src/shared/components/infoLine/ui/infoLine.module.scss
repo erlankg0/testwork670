@@ -1,0 +1,18 @@
+.icon {
+  color: $red-color;
+  width: 20px;
+  height: 20px;
+}
+
+.infoLine {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+
+  &__info {
+    color: white;
+    text-align: center;
+    font-size: 1.25rem;
+  }
+}
