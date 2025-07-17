@@ -5,6 +5,7 @@ import { TopbarUI } from '@/widgets/topbar';
 import { HeaderUI } from '@/widgets/header';
 
 import { Container } from '@/shared/components/container';
+import { NavigationUI } from '@/widgets/navigation';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -29,11 +30,17 @@ export default function RootLayout({
   return (
     <html lang="en">
     <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    <div>
+      <TopbarUI />
+      <HeaderUI />
+      <NavigationUI/>
+    </div>
+    <main>
+      <Container>
+        {children}
+      </Container>
+    </main>
     <TopbarUI />
-    <HeaderUI />
-    <Container>
-      {children}
-    </Container>
     </body>
     </html>
   );
