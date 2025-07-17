@@ -1,9 +1,9 @@
-import styles from './page.module.css';
+import { ProductCard } from '@/entities/product/ui/product-card';
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className={styles.page}>
-      hello World
+    <div>
+      <ProductCard/>
     </div>
   );
 }
