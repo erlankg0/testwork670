@@ -7,8 +7,6 @@
   border-bottom: 0.2rem solid $secondary-color;
   padding: 0 2rem;
 
-
-  // Smooth transitions for dynamic effects
   transition: all 0.3s ease;
 
   &__list {
@@ -72,8 +70,6 @@
 
     // Smooth transitions
     transition: all 0.3s ease;
-
-
   }
 
   // Mobile menu toggle
@@ -88,6 +84,7 @@
 
     @media (max-width: 768px) {
       display: flex;
+      margin-top: 2rem;
     }
 
     span {
@@ -127,11 +124,13 @@
       padding: 1rem 0;
       border-top: 1px solid $secondary-color;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
 
       display: none;
 
       &--open {
         display: flex;
+        height: 100vh;
       }
     }
 
@@ -158,12 +157,7 @@
     }
   }
 
-  // Dark mode
-  @media (prefers-color-scheme: dark) {
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
-  }
 
-  // Reduced motion preference
   @media (prefers-reduced-motion: reduce) {
     transition: none;
 

@@ -12,7 +12,9 @@ export function HeaderUI() {
             <LogoUI />
           </Link>
         </div>
-        <div className={styles.header__banner}></div>
+        <div className={styles.header__banner}>
+          600х70
+        </div>
       </Container>
     </header>
   );

@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import { Container } from '@/shared/components';
 import clsx from 'clsx';
 import styles from './navigation.module.scss';
@@ -19,13 +21,39 @@ const navItems: NavItem[] = [
 ];
 
 export function NavigationUI() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
   return (
     <nav className={styles.navigation} aria-label="Primary navigation">
-      <Container>
-        <ul className={styles.navigation__list}>
+      <Container className={styles.navigation__container}>
+        <button
+          className={clsx(styles.navigation__toggle, {
+            [styles['navigation__toggle--active']]: menuOpen,
+          })}
+          onClick={toggleMenu}
+          aria-label="Toggle navigation menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <ul
+          className={clsx(styles.navigation__list, {
+            [styles['navigation__list--open']]: menuOpen,
+          })}
+        >
           {navItems.map(({ label, href }) => (
             <li key={href} className={styles.navigation__item}>
-              <a href={href} className={styles.navigation__link}>
+              <a
+                href={href}
+                className={styles.navigation__link}
+                onClick={() => setMenuOpen(false)} // Закрытие меню при клике
+              >
                 {label}
               </a>
             </li>
