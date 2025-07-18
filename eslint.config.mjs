@@ -1,6 +1,5 @@
-// For more topbar, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+// eslint.config.js
 import storybook from 'eslint-plugin-storybook';
-
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { FlatCompat } from '@eslint/eslintrc';
@@ -12,16 +11,42 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+export default [
+  // Подключаем совместимость с классическими конфигами (Next.js, TypeScript)
+  ...compat.extends(
+    'next',
+    'next/core-web-vitals',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/stylistic'
+  ),
+
+  // Storybook support
   ...storybook.configs['flat/recommended'],
+
+  // Основные правила
   {
     files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.json',
+      },
+    },
     rules: {
-      '@typescript-eslint/no-explicit-any': 'off',
+      // Типовые предупреждения
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      'no-console': 'warn',
+      'react/react-in-jsx-scope': 'off', // Не нужен в Next.js
     },
   },
 
+  // JS/TS/JSX общие правила
+  {
+    files: ['**/*.{js,ts,jsx,tsx}'],
+    rules: {
+      'no-unused-vars': 'warn',
+      'no-debugger': 'warn',
+    },
+  },
 ];
-
-export default eslintConfig;
