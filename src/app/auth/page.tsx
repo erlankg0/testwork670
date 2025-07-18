@@ -6,18 +6,15 @@ import WrapperForm from '@/shared/wrappers/form-wrapper';
 import { useCallback } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoaderUI } from '@/shared/components';
-import { useRouter } from 'next/navigation';
 
 export default function Page() {
   const { login, loading } = useAuth();
-  const router = useRouter();
 
   const handleSubmit = useCallback(
     async (data: LoginFormData) => {
       await login(data.username, data.password);
-      router.push('/');
     },
-    [login, router],
+    [login],
   );
 
   if (loading) {

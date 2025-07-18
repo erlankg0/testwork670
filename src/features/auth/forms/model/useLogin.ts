@@ -43,6 +43,7 @@ export const useAuth = create<AuthState>((set) => ({
         loading: false,
         error: null,
       });
+      window.location.replace('/')
     } catch (err) {
       const error = err as AxiosError<{ message: string }>;
 
