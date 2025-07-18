@@ -20,7 +20,7 @@ function UserInfo({
   const handleLogout = useCallback(() => {
     window.location.reload();
     onLogout();
-  }, []);
+  }, [onLogout]);
 
   return (
     <div className={styles.user}>

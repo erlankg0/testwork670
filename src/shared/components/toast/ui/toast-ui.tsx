@@ -1,6 +1,5 @@
 'use client';
 import { useToast } from '../model/useToast';
-import styles from './toast.module.scss';
 
 export function ToastUI() {
   const { toast } = useToast();

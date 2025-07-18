@@ -17,7 +17,7 @@ export default function Page() {
       await login(data.username, data.password);
       router.push('/');
     },
-    [login]
+    [login, router],
   );
 
   if (loading) {

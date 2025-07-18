@@ -6,6 +6,7 @@ import type { ProductType } from '../model/types';
 import Link from 'next/link';
 import { ButtonUI } from '@/shared/components';
 import { useAuthentication } from '@/features/auth';
+import Image from 'next/image';
 
 export function ProductCard({
   title,
@@ -21,7 +22,9 @@ export function ProductCard({
       <Link href={`/product/${id}`}>
         <div className={styles.imageWrapper}>
           {!imgLoaded && <div className={styles.skeleton} />}
-          <img
+          <Image
+            width={400}
+            height={400}
             src={thumbnail}
             alt={title}
             onLoad={() => setImgLoaded(true)}

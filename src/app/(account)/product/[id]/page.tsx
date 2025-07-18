@@ -2,13 +2,18 @@ import { notFound } from 'next/navigation';
 import axiosInstance from '@/lib/axios';
 import type { ProductType } from '@/entities/product';
 import styles from './page.module.scss';
+import Image from 'next/image';
 
 type Props = {
-  params: { id: string };
+  params: Promise<{
+    id: string;
+  }>;
 };
 
+
+
 export default async function ProductPage({ params }: Props) {
-  const id = params.id;
+  const { id } = await params;
 
   try {
     const response = await axiosInstance.get<ProductType>(`/products/${id}`);
@@ -18,9 +23,11 @@ export default async function ProductPage({ params }: Props) {
       <div className={styles.page}>
         <div className={styles.productCard}>
           <div className={styles.imageContainer}>
-            <img
-              src={product.images[0]}
+            <Image
+              src={product.thumbnail}
               alt={product.title}
+              width={440}
+              height={240}
               className={styles.thumbnail}
             />
           </div>
@@ -43,7 +50,7 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </div>
     );
-  } catch (error) {
+  } catch {
     notFound();
   }
 }

@@ -17,9 +17,9 @@
 //   matcher: ['/', '/((?!_next/static|_next/image|favicon.ico).*)'], // Все, кроме статики
 // };
 
-import { NextRequest, NextResponse } from 'next/server';
+import {  NextResponse } from 'next/server';
 
-export function middleware(req: NextRequest) {
+export function middleware() {
   return NextResponse.next();
 }
 

@@ -5,14 +5,16 @@ import styles from './home.module.scss';
 import { PaginationUI } from '@/features/pagination';
 
 type Props = {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 };
 
 const LIMIT = 12;
 
 export default async function Page({ searchParams }: Props) {
-  const page = Number(searchParams.page || '1');
-  const skip = (page - 1) * LIMIT;
+  const { page } = await searchParams;
+
+  const pages = Number(page || '1');
+  const skip = (pages - 1) * LIMIT;
 
   const response = await axiosInstance.get<ProductsResponse>('/products', {
     params: { limit: LIMIT, skip },
@@ -32,7 +34,7 @@ export default async function Page({ searchParams }: Props) {
             ))}
           </div>
 
-          <PaginationUI page={page} pageCount={pageCount} />
+          <PaginationUI page={pages} pageCount={pageCount} />
         </Container>
       )}
     </section>

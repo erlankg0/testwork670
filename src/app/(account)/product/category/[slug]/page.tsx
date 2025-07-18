@@ -5,17 +5,19 @@ import styles from '../../home.module.scss';
 import { PaginationUI } from '@/features/pagination';
 
 type Props = {
-  params: { slug: string };
-  searchParams: { page?: string };
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ page?: string }>;
 };
 
 const LIMIT = 12;
 
 export default async function Page({ searchParams, params }: Props) {
-  const page = Number(searchParams.page || '1');
-  const skip = (page - 1) * LIMIT;
+  const { slug } = await params;
+  const { page } = await searchParams;
+  const pages = Number(page || '1');
+  const skip = (pages - 1) * LIMIT;
 
-  const response = await axiosInstance.get<ProductsResponse>(`/products/category/${params.slug}`, {
+  const response = await axiosInstance.get<ProductsResponse>(`/products/category/${slug}`, {
     params: { limit: LIMIT, skip },
   });
 
@@ -24,7 +26,7 @@ export default async function Page({ searchParams, params }: Props) {
 
   return (
     <section className={styles.page}>
-      <h2 className={styles.page__title}>{params.slug.toUpperCase()}</h2>
+      <h2 className={styles.page__title}>{slug.toUpperCase()}</h2>
       {products.length && (
         <Container>
           <div className={styles.products}>
@@ -33,7 +35,7 @@ export default async function Page({ searchParams, params }: Props) {
             ))}
           </div>
 
-          <PaginationUI page={page} pageCount={pageCount} />
+          <PaginationUI page={pages} pageCount={pageCount} />
         </Container>
       )}
 
