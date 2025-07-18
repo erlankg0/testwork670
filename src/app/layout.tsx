@@ -6,6 +6,7 @@ import { HeaderUI } from '@/widgets/header';
 
 import { Container } from '@/shared/components/container';
 import { NavigationUI } from '@/widgets/navigation';
+import { ToastUI } from '@/shared/components/toast';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,12 +34,13 @@ export default function RootLayout({
     <div>
       <TopbarUI />
       <HeaderUI />
-      <NavigationUI/>
+      <NavigationUI />
     </div>
     <main>
       <Container>
         {children}
       </Container>
+      <ToastUI />
     </main>
     <TopbarUI />
     </body>
