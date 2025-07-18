@@ -55,7 +55,6 @@
 
   // Для экранов шире 768px (планшеты и десктопы)
   @media (min-width: 768px) {
-
     &__inner {
       flex-direction: row;
       justify-content: space-between;
@@ -93,5 +92,4 @@
       width: 100%;
     }
   }
-
 }

@@ -3,7 +3,4 @@ export type { LoginFormData } from './forms/model/types';
 export { LoginFormSchema } from './forms/model/types';
 export { useAuth } from './forms/model/useLogin';
 
-export {
-  AuthProvider,
-  useAuthentication
-} from './provider/provider';
+export { AuthProvider, useAuthentication } from './provider/provider';

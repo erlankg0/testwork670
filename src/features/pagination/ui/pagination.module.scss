@@ -4,7 +4,6 @@
   user-select: none;
 }
 
-
 .pagination {
   display: flex;
   justify-content: center;
@@ -23,7 +22,9 @@
   font-weight: 500;
   border-radius: 0.6rem;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 
   &:hover:not(:disabled) {
     background-color: #e4e4e7;

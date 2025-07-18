@@ -7,7 +7,9 @@
   border: 1px solid rgba($secondary-bg-color, 0.2);
   background-color: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-4px);
@@ -93,7 +95,6 @@
   }
 }
 
-
 .button {
   margin-top: 2rem;
   background-color: $secondary-color !important;
@@ -115,4 +116,3 @@
     background-color: darken($secondary-color, 15%) !important;
   }
 }
-

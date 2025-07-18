@@ -9,7 +9,7 @@ type User = {
   firstName: string;
   lastName: string;
   email: string;
-}
+};
 
 interface AuthState {
   user: User | null;

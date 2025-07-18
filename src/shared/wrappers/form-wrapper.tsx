@@ -1,6 +1,11 @@
 'use client';
 
-import { useForm, FormProvider, UseFormProps, FieldValues } from 'react-hook-form';
+import {
+  useForm,
+  FormProvider,
+  UseFormProps,
+  FieldValues,
+} from 'react-hook-form';
 import { ReactNode } from 'react';
 import clsx from 'clsx';
 import styles from './form-wrapper.module.scss';
@@ -13,11 +18,11 @@ type WrapperFormProps<T extends FieldValues> = {
 };
 
 export default function WrapperForm<T extends FieldValues>({
-                                                             children,
-                                                             onSubmit,
-                                                             options,
-                                                             className,
-                                                           }: WrapperFormProps<T>) {
+  children,
+  onSubmit,
+  options,
+  className,
+}: WrapperFormProps<T>) {
   const methods = useForm<T>(options);
 
   return (

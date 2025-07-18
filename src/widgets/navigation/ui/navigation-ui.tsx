@@ -12,12 +12,14 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Hit Deals', href: '/hit-deals' },
+  { label: 'Hit Deals', href: '/product/category/hit-deals' },
   { label: 'Categories', href: '/categories' },
-  { label: 'Laptops', href: '/laptops' },
-  { label: 'Smartphone', href: '/smartphone' },
-  { label: 'Cameras', href: '/cameras' },
-  { label: 'Accessories', href: '/accessories' },
+  { label: 'Laptops', href: '/product/category/laptops' },
+  { label: 'Smartphone', href: '/product/category/smartphone' },
+  { label: 'Cameras', href: '/product/category/cameras' },
+  { label: 'Accessories', href: '/product/category/accessories' },
+
+
 ];
 
 export function NavigationUI() {

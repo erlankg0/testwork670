@@ -4,4 +4,4 @@ export type InfoLinePros = {
   type: 'tel' | 'email' | 'address';
   info: string;
   icon: LucideIcon;
-}
+};

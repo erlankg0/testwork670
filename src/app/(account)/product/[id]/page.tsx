@@ -18,7 +18,11 @@ export default async function ProductPage({ params }: Props) {
       <div className={styles.page}>
         <div className={styles.productCard}>
           <div className={styles.imageContainer}>
-            <img src={product.images[0]} alt={product.title} className={styles.thumbnail} />
+            <img
+              src={product.images[0]}
+              alt={product.title}
+              className={styles.thumbnail}
+            />
           </div>
 
           <div className={styles.details}>

@@ -15,9 +15,11 @@ export function InfoLineUI(props: InfoLinePros) {
     <div className={styles.infoLine}>
       <Icon className={styles.icon} />
       {type === 'tel' || type === 'email' ? (
-        <a href={getHref()} className={styles.infoLine__info}>{info}</a>
+        <a href={getHref()} className={styles.infoLine__info}>
+          {info}
+        </a>
       ) : (
-        <p className={styles.infoLine__info}>{info}</p>  // <-- здесь была ошибка
+        <p className={styles.infoLine__info}>{info}</p> // <-- здесь была ошибка
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import styles from './product-card.module.scss';
@@ -7,9 +7,15 @@ import Link from 'next/link';
 import { ButtonUI } from '@/shared/components';
 import { useAuthentication } from '@/features/auth';
 
-export function ProductCard({ title, price, thumbnail, id, brand }: ProductType) {
+export function ProductCard({
+  title,
+  price,
+  thumbnail,
+  id,
+  brand,
+}: ProductType) {
   const [imgLoaded, setImgLoaded] = useState(false);
-  const { user } = useAuthentication()
+  const { user } = useAuthentication();
   return (
     <article className={styles.card}>
       <Link href={`/product/${id}`}>
@@ -30,9 +36,7 @@ export function ProductCard({ title, price, thumbnail, id, brand }: ProductType)
         <p className={styles.price}>${price}</p>
         <p className={styles.brand}>{brand}</p>
       </div>
-      {user && (
-        <ButtonUI className={styles.button}>Add To</ButtonUI>
-      )}
+      {user && <ButtonUI className={styles.button}>Add To</ButtonUI>}
     </article>
   );
 }

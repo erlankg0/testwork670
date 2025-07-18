@@ -8,11 +8,7 @@ type Props = InputHTMLAttributes<HTMLInputElement>;
 export const InputUI = forwardRef<HTMLInputElement, Props>(
   ({ className, ...rest }, ref) => {
     return (
-      <input
-        ref={ref}
-        className={clsx(styles.input, className)}
-        {...rest}
-      />
+      <input ref={ref} className={clsx(styles.input, className)} {...rest} />
     );
   }
 );

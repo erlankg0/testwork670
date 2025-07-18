@@ -9,8 +9,7 @@ export type ProductType = {
   thumbnail: string;
 
   isAuth?: boolean;
-}
-
+};
 
 export type ProductsResponse = {
   products: ProductType[];

@@ -3,7 +3,7 @@ import { create } from 'zustand';
 
 export const useToast = create<ToastState>((set) => ({
   toast: null,
-  showToast: (message: string, type: "success" | "error") => {
+  showToast: (message: string, type: 'success' | 'error') => {
     set({ toast: { message, type } });
 
     // Автоматически скрыть через 3 секунды

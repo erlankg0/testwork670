@@ -5,12 +5,8 @@ import clsx from 'clsx';
 type ContainerProps = {
   children: ReactNode;
   className?: string;
-}
+};
 
 export function Container({ children, className }: ContainerProps) {
-  return (
-    <div className={clsx(styles.container, className)}>
-      {children}
-    </div>
-  );
+  return <div className={clsx(styles.container, className)}>{children}</div>;
 }

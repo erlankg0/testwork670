@@ -8,18 +8,26 @@ import { useAuth, useAuthentication } from '@/features/auth';
 import Link from 'next/link';
 import { useCallback } from 'react';
 
-function UserInfo({ firstName, lastName, onLogout }: { firstName: string; lastName: string; onLogout: () => void }) {
-
-
-  const handleLogout = useCallback(()=>{
+function UserInfo({
+  firstName,
+  lastName,
+  onLogout,
+}: {
+  firstName: string;
+  lastName: string;
+  onLogout: () => void;
+}) {
+  const handleLogout = useCallback(() => {
     window.location.reload();
     onLogout();
-  },[])
+  }, []);
 
   return (
     <div className={styles.user}>
-      <User aria-label="User Icon"  className={styles.icon}/>
-      <span>{firstName} {lastName}</span>
+      <User aria-label="User Icon" className={styles.icon} />
+      <span>
+        {firstName} {lastName}
+      </span>
       <Link href="/" onClick={handleLogout} className={styles.logout}>
         Logout
       </Link>
@@ -50,7 +58,11 @@ export function TopbarUI() {
 
         <div className={styles.topbar__auth}>
           {user ? (
-            <UserInfo firstName={user.firstName} lastName={user.lastName} onLogout={logout} />
+            <UserInfo
+              firstName={user.firstName}
+              lastName={user.lastName}
+              onLogout={logout}
+            />
           ) : (
             <AuthLink />
           )}

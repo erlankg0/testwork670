@@ -43,7 +43,6 @@ export const useAuth = create<AuthState>((set) => ({
         loading: false,
         error: null,
       });
-
     } catch (err) {
       const error = err as AxiosError<{ message: string }>;
 
@@ -51,7 +50,10 @@ export const useAuth = create<AuthState>((set) => ({
       if (error.response?.data?.message) {
         set({ error: error.response.data.message, loading: false });
       } else {
-        set({ error: 'Что-то пошло не так. Попробуйте позже.', loading: false });
+        set({
+          error: 'Что-то пошло не так. Попробуйте позже.',
+          loading: false,
+        });
       }
     }
   },

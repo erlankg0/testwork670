@@ -8,9 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "lint:css": "stylelint \"**/*.{css,scss}\"",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "lint:css": "stylelint \"**/*.{css,scss}\""
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
