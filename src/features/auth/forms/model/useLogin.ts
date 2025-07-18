@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import axiosInstance from '@/lib/axios';
+import { AxiosError, AxiosResponse } from 'axios';
 
 interface AuthState {
   user: any | null;
@@ -11,6 +12,14 @@ interface AuthState {
   logout: () => void;
 }
 
+const setCookie = (name: string, value: string, maxAge: number) => {
+  document.cookie = `${name}=${value}; path=/; max-age=${maxAge}`;
+};
+
+const deleteCookie = (name: string) => {
+  document.cookie = `${name}=; path=/; max-age=0`;
+};
+
 export const useAuth = create<AuthState>((set) => ({
   user: null,
   token: null,
@@ -20,35 +29,35 @@ export const useAuth = create<AuthState>((set) => ({
   login: async (username, password) => {
     set({ loading: true, error: null });
     try {
-      const response = await axiosInstance.post('auth/login', {
+      const response: AxiosResponse = await axiosInstance.post('auth/login', {
         username,
         password,
       });
 
-      const data = response.data;
-      document.cookie = `token=${data.accessToken}; path=/; max-age=3600`; // 1 час
+      const { accessToken, user } = response.data;
+      setCookie('token', accessToken, 3600); // 1 час
 
       set({
-        user: data.user,
-        token: data.accessToken,
+        user,
+        token: accessToken,
         loading: false,
         error: null,
       });
-      window.location.reload();
 
-    } catch (error: any) {
-      const message =
-        error.response?.data?.message ||
-        error.message ||
-        'Ошибка при входе';
+    } catch (err) {
+      const error = err as AxiosError<{ message: string }>;
 
-      set({ error: message, loading: false });
+      // Исправлено: правильно извлекаем сообщение об ошибке
+      if (error.response?.data?.message) {
+        set({ error: error.response.data.message, loading: false });
+      } else {
+        set({ error: 'Что-то пошло не так. Попробуйте позже.', loading: false });
+      }
     }
   },
 
   logout: () => {
-    document.cookie = 'token=; path=/; max-age=0';
-    window.location.reload();
+    deleteCookie('token');
     set({ user: null, token: null, error: null });
   },
 }));

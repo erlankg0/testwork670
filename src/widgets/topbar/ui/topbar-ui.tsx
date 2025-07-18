@@ -6,13 +6,21 @@ import { InfoLineUI } from '@/shared/components/infoLine';
 import { Container } from '@/shared/components/container';
 import { useAuth, useAuthentication } from '@/features/auth';
 import Link from 'next/link';
+import { useCallback } from 'react';
 
 function UserInfo({ firstName, lastName, onLogout }: { firstName: string; lastName: string; onLogout: () => void }) {
+
+
+  const handleLogout = useCallback(()=>{
+    window.location.reload();
+    onLogout();
+  },[])
+
   return (
     <div className={styles.user}>
       <User aria-label="User Icon"  className={styles.icon}/>
       <span>{firstName} {lastName}</span>
-      <Link href="/" onClick={onLogout} className={styles.logout}>
+      <Link href="/" onClick={handleLogout} className={styles.logout}>
         Logout
       </Link>
     </div>

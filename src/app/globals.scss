@@ -59,3 +59,22 @@ main {
 ul {
   list-style: none;
 }
+
+.errorMessage {
+  color: #dc2626; // насыщенно-красный
+  background-color: #fee2e2; // светло-красный фон
+  border: 1px solid #fca5a5;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.errorIcon {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+}

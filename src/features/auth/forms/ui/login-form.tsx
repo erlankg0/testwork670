@@ -8,9 +8,12 @@ import { ButtonUI, InputUI } from '@/shared/components';
 
 import type { LoginFormData } from '../model/types';
 import styles from './login-form.module.scss';
+import { AlertCircle } from 'lucide-react';
+import { useAuth } from '@/features/auth';
 
 export function LoginForm({ className }: ComponentProps<'div'>) {
   const { register, formState: { errors } } = useFormContext<LoginFormData>();
+  const { error } = useAuth();
 
   return (
     <div className={clsx(styles.form, className)}>
@@ -27,6 +30,12 @@ export function LoginForm({ className }: ComponentProps<'div'>) {
       </div>
 
       <ButtonUI>Login</ButtonUI>
+      {error && (
+        <div className={'errorMessage'}>
+          <AlertCircle className={'errorIcon'} />
+          <span>{error == 'Invalid credentials' ? 'Не правильной пароль или логин' : 'Ой ошибка'}</span>
+        </div>
+      )}
     </div>
   );
 }
