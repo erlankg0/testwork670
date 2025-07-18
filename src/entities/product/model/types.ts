@@ -1,12 +1,18 @@
-export type Product = {
-  id: number;
+export type ProductType = {
+  id: number | string;
   title: string;
   description: string;
   price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
+  images: string[];
+  tags: string[];
   brand: string;
-  category: string;
   thumbnail: string;
 }
+
+
+export type ProductsResponse = {
+  products: ProductType[];
+  total: number;
+  skip: number;
+  limit: number;
+};
