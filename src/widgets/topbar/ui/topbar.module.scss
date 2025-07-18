@@ -1,21 +1,51 @@
 .topbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  align-items: center;
-
   background-color: $secondary-bg-color;
-  height: $topbar-height;
-  width: $topbar-weight;
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
 
-  padding: 1.5rem 1rem;
-
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__contacts {
     display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  &__auth {
+    display: flex;
     align-items: center;
+    gap: 1rem;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $primary-bg-color;
+    font-size: 1.2rem;
+  }
+
+  .icon {
+    color: $red-color;
+  }
+
+  .logout {
+    color: $red-color;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  .login {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.2rem;
+    font-weight: $font-weight-medium;
+    color: $primary-bg-color;
   }
 }

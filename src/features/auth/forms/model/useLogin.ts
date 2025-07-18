@@ -34,6 +34,7 @@ export const useAuth = create<AuthState>((set) => ({
         loading: false,
         error: null,
       });
+      window.location.reload();
 
     } catch (error: any) {
       const message =
@@ -47,7 +48,7 @@ export const useAuth = create<AuthState>((set) => ({
 
   logout: () => {
     document.cookie = 'token=; path=/; max-age=0';
-
+    window.location.reload();
     set({ user: null, token: null, error: null });
   },
 }));

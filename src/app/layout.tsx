@@ -7,6 +7,9 @@ import { HeaderUI } from '@/widgets/header';
 import { Container } from '@/shared/components/container';
 import { NavigationUI } from '@/widgets/navigation';
 import { ToastUI } from '@/shared/components/toast';
+import { ReactNode } from 'react';
+import { AuthProvider } from '@/features/auth';
+import { Footer } from '@/widgets/footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,23 +29,26 @@ export const metadata: Metadata = {
 export default function RootLayout({
                                      children,
                                    }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
+
   return (
     <html lang="en">
     <body className={`${geistSans.variable} ${geistMono.variable}`}>
-    <div>
-      <TopbarUI />
-      <HeaderUI />
-      <NavigationUI />
-    </div>
-    <main>
-      <Container>
-        {children}
-      </Container>
-      <ToastUI />
-    </main>
-    <TopbarUI />
+    <AuthProvider>
+      <div>
+        <TopbarUI />
+        <HeaderUI />
+        <NavigationUI />
+      </div>
+      <main>
+        <Container>
+          {children}
+        </Container>
+        <ToastUI />
+      </main>
+      <Footer />
+    </AuthProvider>
     </body>
     </html>
   );

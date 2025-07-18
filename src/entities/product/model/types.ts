@@ -7,6 +7,8 @@ export type ProductType = {
   tags: string[];
   brand: string;
   thumbnail: string;
+
+  isAuth?: boolean;
 }
 
 

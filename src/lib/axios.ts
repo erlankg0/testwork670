@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getCookie } from '@/lib/cookie';
 
 const axiosInstance = axios.create({
   baseURL: 'https://dummyjson.com/',
@@ -10,8 +11,7 @@ const axiosInstance = axios.create({
 // Interceptor для автоматического добавления токена в каждый запрос
 axiosInstance.interceptors.request.use(
   (config) => {
-    // Получаем токен перед каждым запросом
-    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    const token = getCookie('token');
 
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
@@ -21,23 +21,24 @@ axiosInstance.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
+
 
 axiosInstance.interceptors.response.use(
   (response) => {
     return response;
   },
   (error) => {
-    // Если получили 401, удаляем токен из localStorage
     if (error.response?.status === 401) {
       if (typeof window !== 'undefined') {
-        localStorage.removeItem('token');
+        // Удаляем токен из cookie
+        document.cookie = 'token=; path=/; max-age=0';
       }
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 export default axiosInstance;

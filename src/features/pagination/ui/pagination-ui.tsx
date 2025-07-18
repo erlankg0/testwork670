@@ -1,5 +1,5 @@
 import styles from './pagination.module.scss';
-import { MoveLeft, MoveRight } from 'lucide-react';
+import { Maximize, MoveLeft, MoveRight } from 'lucide-react';
 
 export function PaginationUI({ page, pageCount }: { page: number; pageCount: number }) {
   const pages: (number | 'ellipsis')[] = [];
@@ -42,18 +42,20 @@ export function PaginationUI({ page, pageCount }: { page: number; pageCount: num
 
   return (
     <div className={styles.pagination}>
-      <a
-        href={`?page=1`}
-        className={`${styles.pageButton} ${page === 1 ? styles.disabled : ''}`}
-        aria-disabled={page === 1}
-      >
-        <MoveLeft size={10} />
-      </a>
+      {Math.max(page-1, 1) >= 0 && (
+        <a
+          href={`?page=${Math.max(page - 1, 1)}`}
+          className={`${styles.pageButton} ${page === 1 ? styles.disabled : ''}`}
+          aria-disabled={page === 1}
+        >
+          <MoveLeft size={10} />
+        </a>
+      )}
 
       {pages.map((p) => renderPageButton(p))}
 
       <a
-        href={`?page=${pageCount}`}
+        href={`?page=${Math.min(page + 1, pageCount)}`}
         className={`${styles.pageButton} ${page === pageCount ? styles.disabled : ''}`}
         aria-disabled={page === pageCount}
       >
