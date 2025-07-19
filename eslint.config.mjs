@@ -38,6 +38,7 @@ export default [
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       'no-console': 'warn',
       'react/react-in-jsx-scope': 'off', // Не нужен в Next.js
+      "@typescript-eslint/consistent-type-definitions": "off"
     },
   },
 
